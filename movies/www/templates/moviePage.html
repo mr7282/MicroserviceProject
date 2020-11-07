@@ -7,7 +7,6 @@
     <title>RSGcinema</title>
 </head>
 <body>
-    {{range .}}
         <div>
             <img width="300" height="400" src="{{.PosterURL.String}}" alt="{{.Name}}">
         </div>
@@ -19,7 +18,8 @@
             <p>Продолжительность: {{.Duration.String}}</p>
         </div>
         <div>
-    {{end}}
+            <iframe width="500" height="350" src="{{.MovieURL.String}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 </body>
 </html>
 {{end}}
