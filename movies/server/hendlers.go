@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"html/template"
 	"movies/models"
 	"net/http"
@@ -10,7 +11,7 @@ import (
 )
 
 
-func (serv *Server) movieListAllHendler(w http.ResponseWriter, r *http.Request) {
+func (serv *Server) moviesListAllHendler(w http.ResponseWriter, r *http.Request) {
 	var tmpl = template.Must(template.New("Cinema").ParseFiles("./www/templates/index.html"))
 
 
@@ -38,4 +39,9 @@ func (serv *Server) movieListAllHendler(w http.ResponseWriter, r *http.Request) 
 		serv.lg.WithError(err).Infoln("can't show all posts")
 	}
 
+}
+
+func (serv *Server) movieOneHandler(w http.ResponseWriter, r *http.Request) {
+	inputID := r.ParseForm()
+	fmt.Println(inputID)
 }
