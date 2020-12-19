@@ -34,7 +34,8 @@ func (serv *Server) movieOneHendler(w http.ResponseWriter, r *http.Request) {
 	var tmpl = template.Must(template.New("Cinema").ParseFiles("./www/templates/moviePage.html"))
 
 	idVars := mux.Vars(r)
-	id := idVars["id"]
+	id := idVars["ID"]
+	fmt.Println(id)
 
 	ctx := context.Background()
 
@@ -46,7 +47,6 @@ func (serv *Server) movieOneHendler(w http.ResponseWriter, r *http.Request) {
 	if err := tmpl.ExecuteTemplate(w, "Cinema", oneMovie); err != nil {
 		serv.lg.WithError(err).Info("Can't show this movie page")
 	}
-	fmt.Println(id)
 }
 
 func (serv *Server) faviconHandler(w http.ResponseWriter, r *http.Request) {

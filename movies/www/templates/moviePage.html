@@ -2,15 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/www/style/style.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSGcinema</title>
 </head>
 <body>
-        <div>
+    <div class="allmovies">
+        <div class="poster">
             <img width="300" height="400" src="{{.PosterURL.String}}" alt="{{.Name}}">
         </div>
-        <div>
+        <div class="text">
             <h2>Фильм: {{.Name}}</h2>
             <p>Год: {{.ReleaseMovie.Int}}</p>
             <p>Страна: {{.Country.String}}</p>
@@ -20,6 +23,7 @@
         <div>
             <iframe width="500" height="350" src="{{.MovieURL.String}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+    </div>
 </body>
 </html>
 {{end}}

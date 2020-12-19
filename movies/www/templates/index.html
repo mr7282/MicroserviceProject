@@ -15,8 +15,8 @@
             <div class="poster">
                 <img width="300" height="400" src="{{.PosterURL.String}}" alt="{{.Name}}">
             </div>
-            <div>
-                <h4>Фильм: {{.Name}}</h4>
+            <div class="text">
+                <h4>Фильм: <a href="/movies/{{.ID}}">{{.Name}}</a> </h4>
                 <p>Год: {{.ReleaseMovie.Int}}</p>
                 <p>Страна: {{.Country.String}}</p>
                 <p>Жанр: {{.Genere.String}}</p>
