@@ -2,24 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/www/style/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSGcinema</title>
 </head>
 <body>
-    {{range .}}
-        <div>
-            <img width="300" height="400" src="{{.PosterURL.String}}" alt="{{.Name}}">
+    <div class="allmovies">
+        {{range .}}
+        <div class="onemovie">
+            <div class="poster">
+                <img width="300" height="400" src="{{.PosterURL.String}}" alt="{{.Name}}">
+            </div>
+            <div>
+                <h4>Фильм: {{.Name}}</h4>
+                <p>Год: {{.ReleaseMovie.Int}}</p>
+                <p>Страна: {{.Country.String}}</p>
+                <p>Жанр: {{.Genere.String}}</p>
+                <p>Продолжительность: {{.Duration.String}}</p>
+            </div>
         </div>
-        <div>
-            <h2>Фильм: {{.Name}}</h2>
-            <p>Год: {{.ReleaseMovie.Int}}</p>
-            <p>Страна: {{.Country.String}}</p>
-            <p>Жанр: {{.Genere.String}}</p>
-            <p>Продолжительность: {{.Duration.String}}</p>
-        </div>
-        <div>
-    {{end}}
+        {{end}}
+    </div>
 </body>
 </html>
 {{end}}

@@ -19,7 +19,7 @@ func RenderJson(w http.ResponseWriter, data interface{}) {
 	w.Write(body)
 }
 
-func RenderJsonERR(w http.ResponseWriter, err string, status int) {
+func RenderJsonERR(w http.ResponseWriter, err error, status int) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
 	w.Write(([]byte(fmt.Sprintf(`{"error": "%s"}`, err))))
