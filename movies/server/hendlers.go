@@ -8,10 +8,33 @@ import (
 	"movies/render"
 	"net/http"
 	"path/filepath"
+	"strconv"
 
 	"github.com/gorilla/mux"
 	"github.com/volatiletech/sqlboiler/v4/queries/qm"
 )
+
+func (serv *Server) versionHandler(w http.ResponseWriter, _ *http.Request){
+	type Data struct {
+		Status string `json:"status"`
+		Version string `json:"version"`
+		Commit string `json:"commit"`
+		Build string `json:"build"`
+	}
+
+	data := Data{
+		Status: strconv.Itoa(http.StatusOK),
+		Version: serv.VersionInfo.Version,
+		Commit: serv.VersionInfo.Commit,
+		Build: serv.VersionInfo.Build,
+	}
+
+	render.RenderJson(w, data)
+}
+
+func (serv *Server) heartbeatHandler(w http.ResponseWriter, _ *http.Request) {
+	render.RenderJson(w, http.StatusOK)
+}
 
 
 func (serv *Server) moviesListAllHendler(w http.ResponseWriter, r *http.Request) {
