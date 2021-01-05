@@ -12,4 +12,6 @@ func (serv *Server) Router(route *mux.Router) {
 	route.HandleFunc("/movies/{ID}", serv.movieOneHendler)
 	route.HandleFunc("/favicon.ico", serv.faviconHandler)
 	route.HandleFunc("/www/style/style.css", serv.styleHehdler)
+	route.HandleFunc("/__version__", serv.versionHandler)
+	route.HandleFunc("/__heartbeat__", serv.heartbeatHandler)
 }

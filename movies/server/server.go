@@ -10,15 +10,28 @@ import (
 
 // Server - объект сервера
 type Server struct {
+	VersionInfo
+
 	db *sql.DB
 	lg *logrus.Logger
 
+	port string
+
+}
+
+//VersionInfo - описывает версию сборки
+type VersionInfo struct {
+	Version string
+	Commit string
+	Build string
 }
 
 
 // NewServer - создает новый экземпляр сервера
-func NewServer(db *sql.DB, lg *logrus.Logger) *Server{
+func NewServer(db *sql.DB, lg *logrus.Logger, info VersionInfo, port string) *Server{
 	return &Server{
+		VersionInfo: info,
+		port: port,
 		db: db,
 		lg: lg,
 	}
@@ -30,5 +43,5 @@ func (serv *Server) StartServer() {
 	serv.Router(route)
 
 	logrus.Info("Microservice Movies launched...")
-	serv.lg.WithError(http.ListenAndServe(":8080", route)).Fatal("the server doesn`t start!")
+	serv.lg.WithError(http.ListenAndServe(serv.port, route)).Fatal("the server doesn`t start!")
 }
